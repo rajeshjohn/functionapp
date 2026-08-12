@@ -36,15 +36,8 @@ jobs:
     needs: build-and-deploy
     runs-on: arc-runner-set
     steps:
-      - name: Azure Login (OIDC)
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - name: Deploy schema
         run: |
           sqlcmd -S free-sql-mi-4798156.2cbf604f830e.database.windows.net,1433 -d master \
-            --authentication-method=ActiveDirectoryAccessToken --access-token "$TOKEN" -C \
+            --authentication-method=ActiveDirectoryManagedIdentity -C \
             -Q "SELECT @@VERSION"
-
