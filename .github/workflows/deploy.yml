@@ -45,5 +45,6 @@ jobs:
       - name: Deploy schema
         run: |
           sqlcmd -S free-sql-mi-4798156.2cbf604f830e.database.windows.net,1433 -d master \
-            -G --authentication-method=ActiveDirectoryDefault -C \
+            --authentication-method=ActiveDirectoryDefault -C \
             -Q "SELECT @@VERSION"
+
