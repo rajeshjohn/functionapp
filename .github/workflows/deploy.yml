@@ -1,4 +1,4 @@
-name: Deploy to Azure Function App & DB schema
+name: Deploy to Azure Function App & Managed DB schema
 on:
   push:
     branches: [ main ]
